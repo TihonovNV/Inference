@@ -1,12 +1,28 @@
 import Vue from 'vue'
 import App from './App.vue'
-import vuetify from './plugins/vuetify';
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './plugins/bootstrap-vue'
+import VueRouter from 'vue-router'
+import Scanner from './components/Scanner.vue' 
+import ShoppingCart from './components/ShoppingCart.vue' 
+import Home from './components/Home.vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+ 
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
+Vue.use(VueRouter)
+
+const routes = [
+  {path: '/scanner', component: Scanner},
+  {path: '/cart', component: ShoppingCart},
+  {path: '/', component: Home}
+]
+
+const router = new VueRouter({
+  routes
+})
 
 new Vue({
-  vuetify,
+  router,
   render: h => h(App)
 }).$mount('#app')

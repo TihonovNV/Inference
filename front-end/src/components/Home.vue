@@ -1,11 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-light bg-dark navbar-static-top" style="color:white">
-      <router-link to='/'>
-      Inference
-      </router-link>
-      <i class="fas fa-shopping-cart"></i>
-      <router-link to='/cart'>
+    <router-link to='/cart'>
       <svg
         class="bi bi-camera d-inline-block align-right"
         width="30"
@@ -41,9 +36,6 @@
         <path d="M2 3a1 1 0 011-1h1a1 1 0 010 2H3a1 1 0 01-1-1z" />
       </svg>
       </router-link>
-    </nav>
-    <router-view>
-    </router-view>
   </div>
 </template>
 
@@ -54,15 +46,7 @@ export default {
   },
   components: {
   },
-  computed: {
-    username() {
-      return this.$route.params.username
-    }
-  },
   methods: {
-    goBack() {
-      window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
-    }
   }
 };
 </script>
