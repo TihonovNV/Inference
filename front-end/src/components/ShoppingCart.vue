@@ -25,7 +25,7 @@
         <b-input-group-append>
           <b-button class="form-control" v-on:click="remove(index)">-</b-button>
         </b-input-group-append>
-        <b-button variant="danger" class="ml-auto" v-on:click="delete_item(index)">Delete item</b-button>
+        <b-button variant="danger" class="ml-auto" v-on:click="delete_item(index); changeCartSize()">Delete item</b-button>
       </div>
     </b-card>
     <h1 class="header" v-if="isCartEmpty()">Your cart is empty</h1>
@@ -33,36 +33,14 @@
 </template>
 
 <script>
+import axios from 'axios';
+import EventBus from '@/event-bus';
+
 export default {
   name: "app",
   data() {
     return {
-      items: [
-        {
-          name: "First",
-          id: 1,
-          price: 9,
-          amount: 1
-        },
-        {
-          name: "Second",
-          id: 2,
-          price: 19,
-          amount: 2
-        },
-        {
-          name: "Third",
-          id: 3,
-          price: 29,
-          amount: 3
-        },
-        {
-          name: "Fourth",
-          id: 4,
-          price: 39,
-          amount: 4
-        }
-      ]
+      items: []
     };
   },
   methods: {
@@ -78,7 +56,21 @@ export default {
     },
     isCartEmpty: function() {
       return this.items.length == 0;
+    },
+    changeCartSize: function() {
+      EventBus.$emit('cart-size-changed', this.items.length);
+      console.log("anime")
     }
+  },
+  async created() {
+    try {
+      const res = await axios.get(`http://localhost:3000/items`);
+
+      this.items = res.data;
+    } catch (e) {
+      console.error(e);
+    }
+    EventBus.$emit('cart-size-changed', this.items.length);
   }
 };
 </script>

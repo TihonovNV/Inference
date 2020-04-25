@@ -8,7 +8,7 @@ import Home from './components/Home.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faShoppingCart, faCamera } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
- 
+
 library.add(faShoppingCart, faCamera)
  
 Vue.component('font-awesome-icon', FontAwesomeIcon)

@@ -5,6 +5,7 @@
       <div style="margin-right: auto">
         <router-link to="/cart">
           <font-awesome-icon icon="shopping-cart" />
+          {{this.shoppingCartSize}}
         </router-link>
       </div>
       <div>
@@ -18,9 +19,13 @@
 </template>
 
 <script>
+import EventBus from './event-bus.js';
+
 export default {
   data() {
-    return {};
+    return {
+      shoppingCartSize: 0
+    };
   },
   components: {},
   computed: {
@@ -32,6 +37,11 @@ export default {
     goBack() {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push("/");
     }
+  },
+  mounted(){
+    EventBus.$on('cart-size-changed', newCartSize => {
+      this.shoppingCartSize = newCartSize
+    });
   }
 };
 </script>
