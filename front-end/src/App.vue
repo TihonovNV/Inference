@@ -1,49 +1,19 @@
 <template>
   <div>
     <nav class="navbar navbar-light bg-dark navbar-static-top" style="color:white">
-      <router-link to='/'>
-      Inference
-      </router-link>
-      <i class="fas fa-shopping-cart"></i>
-      <router-link to='/cart'>
-      <svg
-        class="bi bi-camera d-inline-block align-right"
-        width="30"
-        height="30"
-        viewBox="0 0 16 16"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M9 5C7.343 5 5 6.343 5 8a4 4 0 014-4v1z" />
-        <path
-          fill-rule="evenodd"
-          d="M14.333 3h-2.015A5.97 5.97 0 009 2a5.972 5.972 0 00-3.318 1H1.667C.747 3 0 3.746 0 4.667v6.666C0 12.253.746 13 1.667 13h4.015c.95.632 2.091 1 3.318 1a5.973 5.973 0 003.318-1h2.015c.92 0 1.667-.746 1.667-1.667V4.667C16 3.747 15.254 3 14.333 3zM1.5 5a.5.5 0 100-1 .5.5 0 000 1zM9 13A5 5 0 109 3a5 5 0 000 10z"
-          clip-rule="evenodd"
-        />
-        <path d="M2 3a1 1 0 011-1h1a1 1 0 010 2H3a1 1 0 01-1-1z" />
-      </svg>
-      </router-link>
-      <router-link to='/scanner'>
-      <svg
-        class="bi bi-camera d-inline-block align-right"
-        width="30"
-        height="30"
-        viewBox="0 0 16 16"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M9 5C7.343 5 5 6.343 5 8a4 4 0 014-4v1z" />
-        <path
-          fill-rule="evenodd"
-          d="M14.333 3h-2.015A5.97 5.97 0 009 2a5.972 5.972 0 00-3.318 1H1.667C.747 3 0 3.746 0 4.667v6.666C0 12.253.746 13 1.667 13h4.015c.95.632 2.091 1 3.318 1a5.973 5.973 0 003.318-1h2.015c.92 0 1.667-.746 1.667-1.667V4.667C16 3.747 15.254 3 14.333 3zM1.5 5a.5.5 0 100-1 .5.5 0 000 1zM9 13A5 5 0 109 3a5 5 0 000 10z"
-          clip-rule="evenodd"
-        />
-        <path d="M2 3a1 1 0 011-1h1a1 1 0 010 2H3a1 1 0 01-1-1z" />
-      </svg>
-      </router-link>
+      <router-link to="/">Inference</router-link>
+      <div style="margin-right: auto">
+        <router-link to="/cart">
+          <font-awesome-icon icon="shopping-cart" />
+        </router-link>
+      </div>
+      <div>
+        <router-link to="/scanner">
+          <font-awesome-icon icon="camera" />
+        </router-link>
+      </div>
     </nav>
-    <router-view>
-    </router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -52,16 +22,15 @@ export default {
   data() {
     return {};
   },
-  components: {
-  },
+  components: {},
   computed: {
     username() {
-      return this.$route.params.username
+      return this.$route.params.username;
     }
   },
   methods: {
     goBack() {
-      window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
+      window.history.length > 1 ? this.$router.go(-1) : this.$router.push("/");
     }
   }
 };
